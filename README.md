@@ -1,5 +1,4 @@
 # feature-examples
-PUBLIC project with examples of features including their user stories, scenarios, and acceptance criteria.
 
 For each feature, there should be a "Feature" task in Asana
 This task should include:
