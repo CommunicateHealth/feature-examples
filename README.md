@@ -15,7 +15,7 @@ Task Name: Bank Account Transfer
 
 https://github.com/CommunicateHealth/feature-examples/blob/main/bank-account-transfer
 
-**Acceptance Criteria**. 
+**Acceptance Criteria**  
 User must be logged in to make a transfer.  
 User must have at least two accounts.  
 User must have sufficient funds in the source account for the transfer.  
