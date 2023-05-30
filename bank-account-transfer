@@ -1,0 +1,31 @@
+Feature: Account Transfer
+  As a bank customer
+  I want to transfer money between my accounts
+  So that I can manage my finances more effectively
+
+Scenario: Successful transfer between accounts
+  Given I am a logged-in user
+    And I have two accounts: "Checking" with a balance of $200 and "Savings" with a balance of $1000
+  When I transfer $50 from my "Checking" account to my "Savings" account
+  Then the balance of my "Checking" account should be $150
+    And the balance of my "Savings" account should be $1050
+    
+Scenario: Unsuccessful transfer due to insufficient funds
+  Given I am a logged-in user
+    And I have two accounts: "Checking" with a balance of $50 and "Savings" with a balance of $1000
+  When I attempt to transfer $100 from my "Checking" account to my "Savings" account
+  Then I should see an error message stating "Insufficient funds for this transfer"
+    And the balance of my "Checking" account should remain $50
+    And the balance of my "Savings" account should remain $1000
+
+Scenario: Transfer to a non-existing account
+  Given I am a logged-in user
+    And I have a "Checking" account with a balance of $200
+  When I attempt to transfer $50 to a non-existing account
+  Then I should see an error message stating "Destination account does not exist"
+    And the balance of my "Checking" account should remain $200
+
+Scenario: Unauthenticated user trying to make a transfer
+  Given I am not logged in
+  When I attempt to transfer money between accounts
+  Then I should be redirected to the login page
